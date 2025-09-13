@@ -7,23 +7,29 @@ public enum PathMode { OnceStop, Loop, PingPong }
 public class EnemyPathAgent : MonoBehaviour
 {
     [Header("Path")]
-    public Transform[] waypoints;          // sırayla gidilecek noktalar
-    public float reachThreshold = 0.25f;   // noktayı varmış sayma mesafesi
-    public float waitAtPoint = 0f;         // her noktada bekleme süresi (sn)
+    public Transform[] waypoints;
+    public float reachThreshold = 0.25f;
+    public float waitAtPoint = 0f;
     public PathMode mode = PathMode.OnceStop;
 
+    [Header("Movement")]
+    public float moveSpeed = 3.5f;   // Inspector’dan ayarlanabilir hız
+
     [Header("2D Sprite Kullanıyorsan")]
-    public bool faceVelocity2D = true;     // sadece Y ekseninde dönsün
+    public bool faceVelocity2D = true;
 
     NavMeshAgent agent;
     int index = 0;
-    int dir = 1;                           // ping-pong için yön
+    int dir = 1;
     float waitUntil = -1f;
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        // 2D billboard görünüm için genelde:
+
+        // Inspector’dan aldığımız hız
+        agent.speed = moveSpeed;
+
         agent.updateRotation = !faceVelocity2D ? true : false;
         agent.updateUpAxis = !faceVelocity2D ? true : false;
     }
@@ -41,23 +47,24 @@ public class EnemyPathAgent : MonoBehaviour
 
     void Update()
     {
-        // Noktada bekleme
         if (waitUntil > 0f)
         {
             if (Time.time < waitUntil) return;
             waitUntil = -1f;
-            SetNextDestination(); // bekleme bitince ilerle
+            SetNextDestination();
             return;
         }
 
         if (agent.pathPending) return;
 
-        // Ulaştı mı?
         if (agent.remainingDistance <= reachThreshold)
         {
-            // Noktada bekleme istiyorsan
-            if (waitAtPoint > 0f) { waitUntil = Time.time + waitAtPoint; agent.isStopped = true; return; }
-
+            if (waitAtPoint > 0f)
+            {
+                waitUntil = Time.time + waitAtPoint;
+                agent.isStopped = true;
+                return;
+            }
             SetNextDestination();
         }
         else if (faceVelocity2D)
@@ -70,13 +77,12 @@ public class EnemyPathAgent : MonoBehaviour
     {
         agent.isStopped = false;
 
-        // Sonraki index hesapla
         if (mode == PathMode.OnceStop)
         {
             index++;
             if (index >= waypoints.Length)
             {
-                agent.isStopped = true;    // son noktada dur
+                agent.isStopped = true;
                 return;
             }
         }
@@ -84,7 +90,7 @@ public class EnemyPathAgent : MonoBehaviour
         {
             index = (index + 1) % waypoints.Length;
         }
-        else // PingPong
+        else
         {
             if (index == waypoints.Length - 1) dir = -1;
             else if (index == 0) dir = 1;

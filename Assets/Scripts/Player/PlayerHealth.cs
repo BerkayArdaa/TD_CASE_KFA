@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent onDeath;
-
+    public UnityEvent onDamaged;
     void Awake()
     {
         currentHP = maxHP;
@@ -19,8 +19,13 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         if (dmg <= 0) return;
+        int before = currentHP;
         currentHP -= dmg;
         Debug.Log("Player HP: " + currentHP);
+
+        if (currentHP < before)
+            onDamaged?.Invoke();
+
         if (currentHP <= 0)
         {
             currentHP = 0;

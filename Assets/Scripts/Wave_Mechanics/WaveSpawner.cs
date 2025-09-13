@@ -1,0 +1,176 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class WaveSpawner : MonoBehaviour
+{
+    [Header("Spawn Points & Path")]
+    public Transform[] spawnPoints;          // düþmanlarýn doðacaðý noktalar
+    
+
+    [Header("Enemy Pool")]
+    public List<EnemyEntry> enemies = new List<EnemyEntry>();
+
+    [Header("Wave Settings")]
+    public int startWave = 1;                // oyuna baþlama dalgasý
+    public int baseCount = 5;                // 1. dalgadaki düþman sayýsý
+    public int countGrowthPerWave = 2;       // her dalga baþýna eklenecek düþman
+    public float spawnInterval = 0.4f;       // bir düþman ile diðeri arasýndaki süre
+    public float timeBetweenWaves = 5f;      // dalgalar arasý bekleme
+    public KeyCode earlyStartKey = KeyCode.F;// erken baþlatma tuþu
+
+    [Header("Boss Settings (optional)")]
+    public int bossWaveEvery = 5;            // 0 ise kapalý; 5 ise 5.,10.,15. dalga boss
+    public int bossCount = 1;
+
+    [Header("Debug/Info")]
+    public int currentWave;
+    public int aliveEnemies;
+
+    bool spawning;
+    bool waitingNext;
+    Coroutine waveRoutine;
+
+    void Start()
+    {
+        if (spawnPoints == null || spawnPoints.Length == 0)
+        {
+            Debug.LogError("WaveSpawner: spawnPoints boþ.");
+            enabled = false; return;
+        }
+        currentWave = Mathf.Max(1, startWave);
+        waveRoutine = StartCoroutine(WaveLoop());
+    }
+
+    void Update()
+    {
+        // Erken baþlatma
+        if (waitingNext && Input.GetKeyDown(earlyStartKey))
+        {
+            waitingNext = false;
+        }
+    }
+
+    IEnumerator WaveLoop()
+    {
+        while (true)
+        {
+            // Bu dalgaya uygun düþman havuzunu hazýrla
+            var pool = BuildPoolForWave(currentWave);
+
+            bool isBossWave = (bossWaveEvery > 0) && (currentWave % bossWaveEvery == 0) && pool.Any(e => e.isBoss);
+
+            int countThisWave = baseCount + (currentWave - 1) * countGrowthPerWave;
+
+            if (isBossWave)
+            {
+                // Boss dalga: sadece boss(lar)
+                yield return StartCoroutine(SpawnWave(pool.Where(e => e.isBoss).ToList(), bossCount));
+            }
+            else
+            {
+                // Normal dalga
+                yield return StartCoroutine(SpawnWave(pool.Where(e => !e.isBoss).ToList(), countThisWave));
+            }
+
+            // Dalga bitiþi: tüm düþmanlarýn ölmesini bekle
+            while (aliveEnemies > 0) yield return null;
+
+            // Sonraki dalga bekleme
+            waitingNext = true;
+            float t = 0f;
+            while (waitingNext && t < timeBetweenWaves)
+            {
+                t += Time.deltaTime;
+                yield return null;
+            }
+            waitingNext = false;
+
+            currentWave++;
+        }
+    }
+
+    IEnumerator SpawnWave(List<EnemyEntry> pool, int totalToSpawn)
+    {
+        if (pool == null || pool.Count == 0)
+        {
+            Debug.LogWarning($"Wave {currentWave}: uygun düþman yok (pool boþ). Wave atlandý.");
+            yield break;
+        }
+
+        spawning = true;
+
+        for (int i = 0; i < totalToSpawn; i++)
+        {
+            // Rastgele spawn point ve rastgele düþman seç
+            Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            var entry = WeightedPick(pool);
+
+            SpawnOne(entry, sp.position, sp.rotation);
+
+            // aralýk bekle
+            yield return new WaitForSeconds(spawnInterval);
+        }
+
+        spawning = false;
+    }
+
+    void SpawnOne(EnemyEntry entry, Vector3 pos, Quaternion rot)
+    {
+        var go = Instantiate(entry.prefab, pos, rot);
+        aliveEnemies++;
+
+        var deathRelay = go.AddComponent<DeathRelay>();
+        deathRelay.Init(this);
+        
+    }
+
+    // Bu dalga için açýlmýþ enemy’lerden havuz oluþtur
+    List<EnemyEntry> BuildPoolForWave(int wave)
+    {
+        return enemies.Where(e => e.prefab != null && wave >= Mathf.Max(1, e.unlockWave) && e.weight > 0f).ToList();
+    }
+
+    // Aðýrlýklý seçim
+    EnemyEntry WeightedPick(List<EnemyEntry> pool)
+    {
+        float total = pool.Sum(e => e.weight);
+        float r = Random.value * total;
+        float acc = 0f;
+        foreach (var e in pool)
+        {
+            acc += e.weight;
+            if (r <= acc) return e;
+        }
+        return pool[pool.Count - 1];
+    }
+
+    // Enemy ölüm geri çaðýrýmý
+    public void OnEnemyDied()
+    {
+        aliveEnemies = Mathf.Max(0, aliveEnemies - 1);
+    }
+}
+
+// Her düþmana eklenen minik yardýmcý (otomatik)
+public class DeathRelay : MonoBehaviour
+{
+    WaveSpawner spawner;
+    EnemyHealth enemyHealth;
+
+    public void Init(WaveSpawner s)
+    {
+        spawner = s;
+        enemyHealth = GetComponent<EnemyHealth>();
+        if (!enemyHealth) return;
+
+        // EnemyHealth'te Die() içinde Destroy çaðrýlýyor; OnDestroy ile sayalým
+    }
+
+    void OnDestroy()
+    {
+        if (spawner != null)
+            spawner.OnEnemyDied();
+    }
+}
