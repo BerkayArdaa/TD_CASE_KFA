@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         hp -= dmg;
-        Debug.Log(hp);  
+        Debug.Log(hp);   
         if (hp <= 0) Die();
     }
 

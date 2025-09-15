@@ -3,63 +3,64 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement")]
     public float moveSpeed = 6f;
     public float gravity = -20f;
+
+    [Header("Visual")]
+    [SerializeField] private Transform visual;   // "Visual" child
+    [SerializeField] private Animator animator;  // opsiyonel
+    private Vector3 visualBaseScale;
 
     private CharacterController controller;
     private Vector3 velocity;
 
-    [SerializeField] private Transform visual;   // Player/Visual child
-    private Animator animator;
-    private Vector3 visualBaseScale;             // orijinal ölçek
-
     void Awake()
     {
         controller = GetComponent<CharacterController>();
-        if (visual == null) visual = transform.Find("Visual");
-        animator = visual.GetComponent<Animator>();
 
-        visualBaseScale = visual.localScale;     // örn. (5,5,5)
+        if (visual == null) visual = transform.Find("Visual");
+        if (visual != null)
+        {
+            visualBaseScale = visual.localScale;               // örn. (5,5,5)
+            if (animator == null) animator = visual.GetComponent<Animator>();
+        }
     }
 
     void Update()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        Vector3 move = new Vector3(h, 0f, v).normalized;
+        Vector3 input = new Vector3(h, 0f, v).normalized;
 
-        bool isMoving = move.sqrMagnitude > 0.01f;
-        animator.SetBool("IsMove", isMoving);
+        bool isMoving = input.sqrMagnitude > 0.01f;
+        if (animator) animator.SetBool("IsMove", isMoving);
 
-        if (isMoving)
+        // Sprite'ý sola/saða çevir (sadece X iþareti)
+        if (visual && Mathf.Abs(h) > 0.01f)
         {
-            controller.Move(move * moveSpeed * Time.deltaTime);
-
-            // SAÐ/ SOL bakýþ — sadece iþareti deðiþtir, büyüklük ayný kalsýn
-            if (h > 0)
-                visual.localScale = new Vector3(Mathf.Abs(visualBaseScale.x), visualBaseScale.y, visualBaseScale.z);
-            else if (h < 0)
-                visual.localScale = new Vector3(-Mathf.Abs(visualBaseScale.x), visualBaseScale.y, visualBaseScale.z);
+            float sx = Mathf.Sign(h) * Mathf.Abs(visualBaseScale.x);
+            visual.localScale = new Vector3(sx, visualBaseScale.y, visualBaseScale.z);
         }
 
-        if (controller.isGrounded && velocity.y < 0) velocity.y = -2f;
+        // Yerçekimi: önce grounded reset
+        if (controller.isGrounded && velocity.y < 0f)
+            velocity.y = -2f;
+
         velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+
+        // Tek Move çaðrýsý (yatay + düþey)
+        Vector3 horizontal = input * moveSpeed;
+        Vector3 total = horizontal + velocity;
+        controller.Move(total * Time.deltaTime);
     }
+
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.collider.CompareTag("Item"))
         {
             Debug.Log("Iteme çarptý!");
-            // Örn. item alýnsýn:
-            // Destroy(hit.gameObject);
+            // örn: Destroy(hit.gameObject);
         }
     }
 }
-
-
-
-
-
-
-

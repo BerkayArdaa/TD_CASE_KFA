@@ -218,9 +218,9 @@ TextureImporter:
       name: Player_1
       rect:
         serializedVersion: 2
-        x: 129
-        y: 448
-        width: 15
+        x: 130
+        y: 320
+        width: 14
         height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -533,12 +533,12 @@ TextureImporter:
       name: Player_2
       rect:
         serializedVersion: 2
-        x: 145
-        y: 448
-        width: 15
+        x: 146
+        y: 320
+        width: 14
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -555,11 +555,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 161
-        y: 448
+        y: 320
         width: 15
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -575,8 +575,71 @@ TextureImporter:
       name: Player_4
       rect:
         serializedVersion: 2
-        x: 177
-        y: 448
+        x: 178
+        y: 320
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6b05901f0b15ee429fd55150733b4bc
+      internalID: 1304966897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 96
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 145e95c0152418644910bf53f6d404b9
+      internalID: -1319621001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wand
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 353
+        width: 8
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b34073f3425d864ea60971101a8c127
+      internalID: 351528324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangedEnemy
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 144
         width: 15
         height: 20
       alignment: 0
@@ -586,8 +649,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6b05901f0b15ee429fd55150733b4bc
-      internalID: 1304966897
+      spriteID: 45c779ad19499b3418743d1323146e1b
+      internalID: 1970593954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0x72_DungeonTilesetII_v1.7_0
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 134
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eed2c1c597aeed34daff09ef7c4668ad
+      internalID: 1021126641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangedEnemy_2
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 144
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19a03a4cccc7d3f46a2c50f9b2d717d6
+      internalID: -1017445868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangedEnemy_3
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 144
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90901583e4378bf48be39c2b7c831e3d
+      internalID: -1739950372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RangedEnemy_4
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 144
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec5683c869d4afd47bd9e54bfe349d30
+      internalID: -816385660
       vertices: []
       indices: 
       edges: []
@@ -603,10 +750,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      0x72_DungeonTilesetII_v1.7_0: 1021126641
       Arrow: -17500477
       Bite1: 776212125
       Bite2: 996985812
       Bite3: 1350656179
+      Boss_1: -1319621001
       BowClose: 625635730
       BowOpen: -389580205
       Door: -1701212951
@@ -626,6 +775,11 @@ TextureImporter:
       Player_2: 1463170071
       Player_3: 296341206
       Player_4: 1304966897
+      RangedEnemy: 1970593954
+      RangedEnemy_2: -1017445868
+      RangedEnemy_3: -1739950372
+      RangedEnemy_4: -816385660
+      Wand: 351528324
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
