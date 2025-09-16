@@ -122,10 +122,8 @@ public class WaveSpawner : MonoBehaviour
         aliveEnemies++;
 
         var deathRelay = go.AddComponent<DeathRelay>();
-        deathRelay.Init(this);
-        
+        deathRelay.Init(this, entry.isBoss); // <-- isBoss bilgisini pasla
     }
-
     // Bu dalga için açýlmýþ enemy’lerden havuz oluþtur
     List<EnemyEntry> BuildPoolForWave(int wave)
     {
@@ -157,20 +155,30 @@ public class WaveSpawner : MonoBehaviour
 public class DeathRelay : MonoBehaviour
 {
     WaveSpawner spawner;
-    EnemyHealth enemyHealth;
+    bool isBoss;
+    bool notified = false; // güvenlik: tek sefer artýr
 
-    public void Init(WaveSpawner s)
+    public void Init(WaveSpawner s, bool boss)
     {
         spawner = s;
-        enemyHealth = GetComponent<EnemyHealth>();
-        if (!enemyHealth) return;
-
-        // EnemyHealth'te Die() içinde Destroy çaðrýlýyor; OnDestroy ile sayalým
+        isBoss = boss;
     }
 
     void OnDestroy()
     {
+        if (notified) return;
+        notified = true;
+
+        // Wave sayacý
         if (spawner != null)
             spawner.OnEnemyDied();
+
+        // Skor
+        if (ScoreManager.Instance != null)
+        {
+            int points = isBoss ? 100 : 10;
+            ScoreManager.Instance.Add(points);
+        }
     }
 }
+
