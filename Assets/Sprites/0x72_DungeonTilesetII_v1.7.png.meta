@@ -748,7 +748,7 @@ TextureImporter:
         width: 6
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -764,12 +764,12 @@ TextureImporter:
       name: Score2
       rect:
         serializedVersion: 2
-        x: 298
+        x: 297
         y: 120
-        width: 4
+        width: 6
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -785,12 +785,12 @@ TextureImporter:
       name: Score3
       rect:
         serializedVersion: 2
-        x: 307
+        x: 305
         y: 120
-        width: 2
+        width: 6
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -806,12 +806,12 @@ TextureImporter:
       name: Score4
       rect:
         serializedVersion: 2
-        x: 314
+        x: 313
         y: 120
-        width: 4
+        width: 6
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -819,6 +819,69 @@ TextureImporter:
       bones: []
       spriteID: 659b0fe76b5d8a34c8648d8fb0c002db
       internalID: -490628737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 130
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0676e4c5c4f09e84792f57af7403a1cf
+      internalID: 634235624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart2
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 130
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68e0e07136081874fa43e869dc8c8ccf
+      internalID: -63028893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart3
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 130
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fd635d6872f35d4cb4e1e192d69d783
+      internalID: -709006378
       vertices: []
       indices: 
       edges: []
@@ -851,6 +914,9 @@ TextureImporter:
       GreenEnemy: -1214005249
       GreenEnemy2: -1769407697
       GreenEnemy3: -1770575312
+      Heart: 634235624
+      Heart2: -63028893
+      Heart3: -709006378
       NeonEnemy: -1727681164
       NeonEnemy2: -2053864053
       NeonEnemy3: 1529445783

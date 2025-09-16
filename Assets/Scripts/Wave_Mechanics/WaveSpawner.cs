@@ -2,12 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class FloatEvent : UnityEvent<float> { } // Inspector’dan (0..1) progress dinlemek için
 
 public class WaveSpawner : MonoBehaviour
 {
+    [System.Serializable]
+    public class IntEvent : UnityEvent<int> { }
+    [Header("Wave Events")]
+    public IntEvent onWaveStarted;   // Dalga baþladýðýnda (dalga no)
+    public IntEvent onWaveCleared;   // Dalga bittiðinde (dalga no)
+
     [Header("Spawn Points & Path")]
-    public Transform[] spawnPoints;          // düþmanlarýn doðacaðý noktalar
-    
+    public Transform[] spawnPoints;
 
     [Header("Enemy Pool")]
     public List<EnemyEntry> enemies = new List<EnemyEntry>();
@@ -28,8 +37,20 @@ public class WaveSpawner : MonoBehaviour
     public int currentWave;
     public int aliveEnemies;
 
+    // ---- UI & State Exposure ----
+    [Header("UI Events")]
+    public UnityEvent onBetweenWavesStart;   // bekleme baþladýðýnda (UI’yi açmak vs.)
+    public FloatEvent onBetweenWavesTick;    // her frame 0..1 progress (doldurma için)
+    public UnityEvent onBetweenWavesEnd;     // bekleme bittiðinde (UI’yi kapamak vs.)
+
+    public bool IsWaitingNext => waitingNext;
+    public float WaitDuration => timeBetweenWaves;
+    public float WaitRemaining => Mathf.Max(0f, timeBetweenWaves - waitTimer);
+    public float WaitProgress01 => (timeBetweenWaves <= 0f) ? 1f : Mathf.Clamp01(waitTimer / timeBetweenWaves);
+
     bool spawning;
     bool waitingNext;
+    float waitTimer;                         // beklemede geçen süre
     Coroutine waveRoutine;
 
     void Start()
@@ -45,11 +66,20 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-        // Erken baþlatma
+        // Klavye ile erken baþlatma
         if (waitingNext && Input.GetKeyDown(earlyStartKey))
-        {
-            waitingNext = false;
-        }
+            StartNextWaveEarly();
+    }
+
+    /// <summary>
+    /// UI/tuþ çaðýrýmý için: beklemeyi kes ve bir sonraki dalgayý baþlat.
+    /// Baþarýlýysa true döner (beklemede deðilse false).
+    /// </summary>
+    public bool StartNextWaveEarly()
+    {
+        if (!waitingNext) return false;
+        waitingNext = false;          // WaveLoop beklemeyi sonlandýracak
+        return true;
     }
 
     IEnumerator WaveLoop()
@@ -59,9 +89,13 @@ public class WaveSpawner : MonoBehaviour
             // Bu dalgaya uygun düþman havuzunu hazýrla
             var pool = BuildPoolForWave(currentWave);
 
-            bool isBossWave = (bossWaveEvery > 0) && (currentWave % bossWaveEvery == 0) && pool.Any(e => e.isBoss);
+            bool isBossWave = (bossWaveEvery > 0) &&
+                              (currentWave % bossWaveEvery == 0) &&
+                              pool.Any(e => e.isBoss);
 
             int countThisWave = baseCount + (currentWave - 1) * countGrowthPerWave;
+
+            onWaveStarted?.Invoke(currentWave);
 
             if (isBossWave)
             {
@@ -77,15 +111,24 @@ public class WaveSpawner : MonoBehaviour
             // Dalga bitiþi: tüm düþmanlarýn ölmesini bekle
             while (aliveEnemies > 0) yield return null;
 
-            // Sonraki dalga bekleme
+            onWaveCleared?.Invoke(currentWave);
+
+            // Sonraki dalga bekleme (erken baþlatmaya izin ver)
             waitingNext = true;
-            float t = 0f;
-            while (waitingNext && t < timeBetweenWaves)
+            waitTimer = 0f;
+            onBetweenWavesStart?.Invoke();
+
+            while (waitingNext && waitTimer < timeBetweenWaves)
             {
-                t += Time.deltaTime;
+                waitTimer += Time.deltaTime;
+                onBetweenWavesTick?.Invoke(WaitProgress01); // 0..1 arasý
                 yield return null;
             }
+
+            // Bekleme bitti (ya süre doldu ya da StartNextWaveEarly çaðrýldý)
             waitingNext = false;
+            onBetweenWavesTick?.Invoke(1f);
+            onBetweenWavesEnd?.Invoke();
 
             currentWave++;
         }
@@ -124,10 +167,13 @@ public class WaveSpawner : MonoBehaviour
         var deathRelay = go.AddComponent<DeathRelay>();
         deathRelay.Init(this, entry.isBoss); // <-- isBoss bilgisini pasla
     }
+
     // Bu dalga için açýlmýþ enemy’lerden havuz oluþtur
     List<EnemyEntry> BuildPoolForWave(int wave)
     {
-        return enemies.Where(e => e.prefab != null && wave >= Mathf.Max(1, e.unlockWave) && e.weight > 0f).ToList();
+        return enemies.Where(e => e.prefab != null &&
+                                  wave >= Mathf.Max(1, e.unlockWave) &&
+                                  e.weight > 0f).ToList();
     }
 
     // Aðýrlýklý seçim
@@ -181,4 +227,3 @@ public class DeathRelay : MonoBehaviour
         }
     }
 }
-
