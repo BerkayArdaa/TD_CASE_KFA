@@ -1,42 +1,45 @@
-// EnemyShooter.cs  (yeni enemy tipine ekle)
+// EnemyShooter.cs
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyShooter : MonoBehaviour
 {
-    [Header("Detection")]
-    public float detectRadius = 10f;
-    public LayerMask playerMask;        // sadece Player layer'ý
-    public LayerMask obstructionMask;   // (opsiyon) engeller (duvar, kaya) görüyü keser
+    [Header("Tespit")]
+    public float detectRadius = 10f;       // Oyuncuyu algýlama yarýçapý
+    public LayerMask playerMask;           // Oyuncu layer'ý
+    public LayerMask obstructionMask;      // Engel layer'ý (opsiyonel)
 
-    [Header("Attack")]
-    public float fireRate = 1.0f;       // saniyede 1 atýþ
-    public Transform firePoint;
+    [Header("Saldýrý")]
+    public float fireRate = 1f;            // Saniyedeki atýþ sayýsý
+    public Transform firePoint;            // Merminin çýkýþ noktasý
     public GameObject slowProjectilePrefab;
 
-    float nextFireTime;
+    private float nextFireTime;
 
     void Update()
     {
-        // Menziðe giren player var mý?
-        Collider[] hits = Physics.OverlapSphere(transform.position, detectRadius, playerMask, QueryTriggerInteraction.Collide);
+        // Oyuncu menzilde mi?
+        Collider[] hits = Physics.OverlapSphere(
+            transform.position, detectRadius, playerMask, QueryTriggerInteraction.Collide
+        );
         if (hits.Length == 0) return;
 
-        Transform target = hits[0].transform; // en yakýn yerine basitçe ilkini al
-        Vector3 dir = (target.position - transform.position);
+        Transform target = hits[0].transform;
+        Vector3 dir = target.position - transform.position;
         dir.y = 0f;
 
-        // (Opsiyon) Görüþ kontrolü
+        // Arada engel varsa atýþ yapma
         if (obstructionMask.value != 0)
         {
-            if (Physics.Raycast(transform.position + Vector3.up * 0.5f, dir.normalized, out RaycastHit block, detectRadius, obstructionMask))
-                return; // arada engel var
+            if (Physics.Raycast(transform.position + Vector3.up * 0.5f, dir.normalized,
+                                out RaycastHit block, detectRadius, obstructionMask))
+                return;
         }
 
-        // sprite yönü (2D görünüm için)
+        // Sprite yönünü hedefe çevir
         if (dir.sqrMagnitude > 0.0001f)
             transform.rotation = Quaternion.LookRotation(dir);
 
+        // Ateþ etme kontrolü
         if (Time.time >= nextFireTime)
         {
             Fire(target.position);
@@ -49,12 +52,12 @@ public class EnemyShooter : MonoBehaviour
         if (!slowProjectilePrefab || !firePoint) return;
 
         Vector3 dir = (targetPos - firePoint.position).normalized;
-        float spawnOffset = 0.2f;
-        Vector3 spawn = firePoint.position + dir * spawnOffset;
+        Vector3 spawn = firePoint.position + dir * 0.2f;
 
         Instantiate(slowProjectilePrefab, spawn, Quaternion.LookRotation(dir));
     }
 
+    // Editörde menzil çizimi
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

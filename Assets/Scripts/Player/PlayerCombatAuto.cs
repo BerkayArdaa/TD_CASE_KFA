@@ -13,7 +13,7 @@ public class PlayerCombatAuto : MonoBehaviour
     [Header("Attack")]
     public AttackMode attackMode = AttackMode.Ranged;
     public float attackRate = 2f;         // saniyede 2 atak
-    public float meleeRange = 1.8f;
+    public float meleeRange = 1.8f; 
     public int meleeDamage = 12;
 
     [Header("Ranged")]
@@ -23,7 +23,9 @@ public class PlayerCombatAuto : MonoBehaviour
     public int projectileDamage = 10;
 
     float nextAttackTime;
-
+    /// <summary>
+    /// ÖNEMLÝ NOT: TO DO--> Yakýn saldýrý modu mekaniksel anlamda mevcut. Ancak oyunda kullanýlmadý.
+    /// </summary>
     void Update()
     {
         if (Time.time < nextAttackTime) return;
@@ -31,7 +33,7 @@ public class PlayerCombatAuto : MonoBehaviour
         Transform target = FindClosestEnemy();
         if (!target) return;
 
-        // isteðe baðlý: yüzünü hedefe çevir
+        //yüzünü hedefe çevir
         if (aimPivot)
         {
             Vector3 dir = target.position - aimPivot.position;

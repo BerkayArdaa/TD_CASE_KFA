@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class PlayerHealth : MonoBehaviour
             currentHP = 0;
             onDeath?.Invoke();
             Destroy(gameObject);
-            //TO DO
+            SceneManager.LoadScene("Menu");
         }
     }
 

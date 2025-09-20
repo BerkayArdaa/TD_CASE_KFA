@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class BiteEffectFollower : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private Vector3 offset = new Vector3(0f, 1f, 0f);
+    [SerializeField] private Transform target;              // Takip edilecek obje
+    [SerializeField] private Vector3 offset = new(0f, 1f, 0f); // Konum offseti
 
     private Animator animator;
     private float scheduledDestroyTime = -1f;
@@ -16,10 +16,9 @@ public class BiteEffectFollower : MonoBehaviour
 
     void OnEnable()
     {
-        // Animasyon süresine göre kendini yok etmeyi planla
+        // Aktif animasyon süresine göre yok olma zamanýný ayarla
         if (animator != null)
         {
-            // Geçerli state süresi (Layer 0)
             float len = animator.GetCurrentAnimatorStateInfo(0).length;
             scheduledDestroyTime = Time.time + len;
         }
@@ -27,15 +26,16 @@ public class BiteEffectFollower : MonoBehaviour
 
     void LateUpdate()
     {
+        // Hedefi takip et
         if (target != null)
             transform.position = target.position + offset;
 
-        // Güvenli kapatma (animasyon bitimi)
+        // Animasyon süresi dolduysa objeyi yok et
         if (scheduledDestroyTime > 0f && Time.time >= scheduledDestroyTime)
             Destroy(gameObject);
     }
 
-    // Animation Event ile de çaðrýlabilir (animasyon son frame)
+    // Alternatif: animasyonun son frame’ine event eklenerek çaðrýlabilir
     public void DestroySelf()
     {
         Destroy(gameObject);

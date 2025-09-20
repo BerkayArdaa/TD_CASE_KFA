@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // TextMesh Pro kullanýyorsun diye ekledim
+using TMPro; 
 
 public class ScoreManager : MonoBehaviour
 {

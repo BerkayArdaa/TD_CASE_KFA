@@ -6,17 +6,17 @@ public enum PathMode { OnceStop, Loop, PingPong }
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyPathAgent : MonoBehaviour
 {
-    [Header("Path")]
-    public Transform[] waypoints;
-    public float reachThreshold = 0.25f;
-    public float waitAtPoint = 0f;
+    [Header("Rota")]
+    public Transform[] waypoints;          // Ziyaret edilecek noktalar
+    public float reachThreshold = 0.25f;   // Noktaya varmış sayılma mesafesi
+    public float waitAtPoint = 0f;         // Noktada bekleme süresi
     public PathMode mode = PathMode.OnceStop;
 
-    [Header("Movement")]
-    public float moveSpeed = 3.5f;   // Inspector’dan ayarlanabilir hız
+    [Header("Hareket")]
+    public float moveSpeed = 3.5f;         // Ajan hızı
 
-    [Header("2D Sprite Kullanıyorsan")]
-    public bool faceVelocity2D = true;
+    [Header("2D Sprite")]
+    public bool faceVelocity2D = true;     // Hız yönüne bak (2D görünüm)
 
     NavMeshAgent agent;
     int index = 0;
@@ -26,12 +26,11 @@ public class EnemyPathAgent : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-
-        // Inspector’dan aldığımız hız
         agent.speed = moveSpeed;
 
-        agent.updateRotation = !faceVelocity2D ? true : false;
-        agent.updateUpAxis = !faceVelocity2D ? true : false;
+        // 2D billboard için rotasyon/upAxis'i NavMeshAgent'a bırakma
+        agent.updateRotation = !faceVelocity2D;
+        agent.updateUpAxis = !faceVelocity2D;
     }
 
     void Start()
@@ -47,6 +46,7 @@ public class EnemyPathAgent : MonoBehaviour
 
     void Update()
     {
+        // Bekleme süresi aktifse
         if (waitUntil > 0f)
         {
             if (Time.time < waitUntil) return;
@@ -57,6 +57,7 @@ public class EnemyPathAgent : MonoBehaviour
 
         if (agent.pathPending) return;
 
+        // Hedefe yeterince yaklaştıysa
         if (agent.remainingDistance <= reachThreshold)
         {
             if (waitAtPoint > 0f)
@@ -82,7 +83,7 @@ public class EnemyPathAgent : MonoBehaviour
             index++;
             if (index >= waypoints.Length)
             {
-                agent.isStopped = true;
+                agent.isStopped = true; // Rota bitti
                 return;
             }
         }
@@ -90,7 +91,7 @@ public class EnemyPathAgent : MonoBehaviour
         {
             index = (index + 1) % waypoints.Length;
         }
-        else
+        else // PingPong
         {
             if (index == waypoints.Length - 1) dir = -1;
             else if (index == 0) dir = 1;

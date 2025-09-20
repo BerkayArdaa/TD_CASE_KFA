@@ -4,31 +4,36 @@ using System.Collections;
 
 public class BaseHealth : MonoBehaviour
 {
-    public int maxHP = 500;
-    public int currentHP;
+    [Header("Can Ayarlarý")]
+    public int maxHP = 500;      // Baþlangýç caný
+    public int currentHP;        // Güncel can
 
     void Awake() => currentHP = maxHP;
 
+    
+    /// Base'e hasar uygular ve yok olma durumunu kontrol eder
+    
     public void TakeDamage(int dmg)
     {
         currentHP -= dmg;
-        Debug.Log("BASE HP: " + currentHP);
+        Debug.Log("Base HP: " + currentHP);
 
         if (currentHP <= 0)
         {
             currentHP = 0;
-            Debug.Log("BASE DESTROYED!");
+            Debug.Log("Base yok oldu!");
 
-            // Base objesini yok etmeden menüye dön
+            // Menü sahnesine dönüþ (birkaç saniye gecikmeli)
             StartCoroutine(ReturnToMenuAfterDelay(2f));
         }
     }
 
+   
+    /// Belirtilen süre sonra menü sahnesine döner
+  
     private IEnumerator ReturnToMenuAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-
-      
         SceneManager.LoadScene("Menu");
     }
 }

@@ -102,7 +102,7 @@ public class ArrowRainManager : MonoBehaviour
             return false;
         }
 
-        Debug.LogWarning("ArrowRainManager: Skor kaynağı bulunamadı (ScoreManager ya da scoreText atayın).");
+        Debug.LogWarning("ArrowRainManager: Skor kaynağı bulunamadı");
         return false;
     }
 
