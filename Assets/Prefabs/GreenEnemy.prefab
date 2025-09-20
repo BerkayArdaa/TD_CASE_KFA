@@ -70,6 +70,7 @@ MonoBehaviour:
   tickInterval: 1
   allowStack: 0
   playerTag: Player
+  baseTag: Base
 --- !u!1 &2297209974711981603
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,8 +311,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  reachThreshold: 3.5
+  reachThreshold: 2
   waitAtPoint: 0
   mode: 0
   moveSpeed: 1

@@ -832,7 +832,7 @@ TextureImporter:
         width: 13
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -853,7 +853,7 @@ TextureImporter:
         width: 13
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -874,7 +874,7 @@ TextureImporter:
         width: 13
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -882,6 +882,111 @@ TextureImporter:
       bones: []
       spriteID: 0fd635d6872f35d4cb4e1e192d69d783
       internalID: -709006378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exit
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 352
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bdde93e91d38d24c932581c0fd1ca2c
+      internalID: 41635909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 384
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25549508d0a8d3f4cab826beccfd1daa
+      internalID: -1250647641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: upper
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 289
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 809090815a3742444a926bcd72891a55
+      internalID: 705123662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Downer
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 289
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 066f25984ed010943bdc8643da2567e2
+      internalID: -1687894026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Health
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 293
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 806bd2bafd535c64daadd8e2ade21fc8
+      internalID: 694111476
       vertices: []
       indices: 
       edges: []
@@ -906,14 +1011,17 @@ TextureImporter:
       BowClose: 625635730
       BowOpen: -389580205
       Door: -1701212951
+      Downer: -1687894026
       Environment_1: 1457591075
       Environment_2: 18416362
       Environment_3: -1711439111
       Environment_4: 1161223598
+      Exit: 41635909
       GreenEnem4: -1673349262
       GreenEnemy: -1214005249
       GreenEnemy2: -1769407697
       GreenEnemy3: -1770575312
+      Health: 694111476
       Heart: 634235624
       Heart2: -63028893
       Heart3: -709006378
@@ -933,7 +1041,9 @@ TextureImporter:
       Score2: -20394858
       Score3: -476864541
       Score4: -490628737
+      Select: -1250647641
       Wand: 351528324
+      upper: 705123662
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

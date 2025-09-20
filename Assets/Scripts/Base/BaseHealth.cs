@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class BaseHealth : MonoBehaviour
 {
@@ -11,12 +13,22 @@ public class BaseHealth : MonoBehaviour
     {
         currentHP -= dmg;
         Debug.Log("BASE HP: " + currentHP);
+
         if (currentHP <= 0)
         {
             currentHP = 0;
-       
             Debug.Log("BASE DESTROYED!");
-            Destroy(gameObject);
+
+            // Base objesini yok etmeden menüye dön
+            StartCoroutine(ReturnToMenuAfterDelay(2f));
         }
+    }
+
+    private IEnumerator ReturnToMenuAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+      
+        SceneManager.LoadScene("Menu");
     }
 }

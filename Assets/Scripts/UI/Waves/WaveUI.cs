@@ -121,9 +121,9 @@ public class WaveUI : MonoBehaviour
         float remain = spawner.WaitRemaining;           // saniye
         int nextWave = spawner.currentWave + 1;         // bekleme sýrasýnda currentWave biten dalgayý gösterir
 
-        string earlyKey = spawner.earlyStartKey.ToString();
+        
         string msg = $"{nextWave}. Wave Will Start {remain:0.0}";
-        msg += $"   [{earlyKey}] Early Start";
+        msg += "[F] Early Start";
 
         if (countdownText) countdownText.text = msg;
 
