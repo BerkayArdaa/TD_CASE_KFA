@@ -44,7 +44,7 @@ Bu proje, **Unity** kullanılarak 3D ortamda **2D sprite (billboard tekniği)** 
 ## 📖 Senaryo  
 - Tower Defence türünde bir oyun.  
 - Düşmanlar dalga dalga gelir ve belirlenmiş yolu takip eder.  
-- Oyuncu WASD ile hareket eder, en yakındaki düşmana otomatik saldırır (yakın veya menzilli olucak şekilde ayarlanmış bir script mevcuttur).  
+- Oyuncu WASD ile hareket eder, Shift ile dash atabilir, en yakındaki düşmana otomatik saldırır (yakın veya menzilli olucak şekilde ayarlanmış bir script mevcuttur).  
 
 ---
 ## Player  
@@ -379,6 +379,7 @@ Bu sayede oyun içindeki görsellik hem akıcı hem de anlaşılır bir yapıda 
 | Aksiyon | Tuş |
 |---|---|
 | Hareket | **W/A/S/D** |
+| Dash | **Shift** |
 | Ok Yağdırma | **Q** |
 | Can Doldurma | **E** |
 | Dalga Erken Başlat | **F** |
@@ -414,7 +415,7 @@ Bu sayede oyun içindeki görsellik hem akıcı hem de anlaşılır bir yapıda 
 | **200 skorla Ok Yağmuru + ilgili UI** (Extra)          | ✅ |
 | **200 skorla Can Doldurma + ilgili UI** (Extra)        | ✅ |
 | **Can gösteren UI (Hearts/Health bar)** (Extra)        | ✅ |
-
+| **Shift ile Dash atma yeteneği** (Extra)               | ✅ |
 
 
 ---
