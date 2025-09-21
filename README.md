@@ -340,14 +340,6 @@ Player’a bağlı scriptler ve inspector kullanımları:
 
 ---
 
-## 📈 Performans & Stres Testi  
-
-- **Test PC**: i5-10400F, GTX 1650, 16 GB RAM  
-- **1500** aktif animasyon ≈ **35 FPS**  
-- **2500** aktif animasyon ≈ **28 FPS**  
-- **5000+** aktif animasyon ≈ **15 FPS**  
-
----
 
 ## 📜 Lisans & Asset Kredileri  
 
@@ -364,6 +356,6 @@ Projeyi klonlamak için:
 
 ```bash
 git lfs install
-git clone <repo_url>
+git clone https://github.com/BerkayArdaa/TD_CASE_KFA.git
 git lfs pull
 
