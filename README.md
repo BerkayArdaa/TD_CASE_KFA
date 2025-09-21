@@ -312,3 +312,56 @@ Projeyi klonlamak için:
 git lfs install
 git clone <repo_url>
 git lfs pull
+
+## 🎮 Kontroller  
+
+| Aksiyon | Tuş |
+|---|---|
+| Hareket | **W/A/S/D** |
+| Ok Yağdırma | **Q** |
+| Can Doldurma | **E** |
+| Dalga Erken Başlat | **F** |
+| Duraklat | **ESC** |
+
+---
+
+## 🛠️ Kullanılan Oyun Motoru & Versiyon  
+
+- **Unity**: 2022.3.49f1 (LTS)  
+- **Render Pipeline**: Built-in  
+- **Platform**: Windows 64-bit  
+
+---
+
+## 📊 Case Gereksinim Eşlemesi  
+
+| Case Maddesi | Bu Proje |
+|---|---|
+| 3D dünyada 2D billboard | ✅ |
+| WASD hareket | ✅ |
+| Otomatik saldırı | ✅ |
+| Dalga tabanlı düşmanlar | ✅ |
+| NavMesh ile yol takibi | ✅ |
+| Renk/hız/can farklı düşman | ✅ |
+| Erken dalga çağırma (Extra) | ✅ |
+| Başlangıç menüsü (Extra) | ✅ |
+| Boss dalgaları (Extra) | ✅ |
+
+---
+
+## 📈 Performans & Stres Testi  
+
+- **Test PC**: i5-10400F, GTX 1650, 16 GB RAM  
+- **1500** aktif animasyon ≈ **35 FPS**  
+- **2500** aktif animasyon ≈ **28 FPS**  
+- **5000+** aktif animasyon ≈ **15 FPS**  
+
+---
+
+## 📜 Lisans & Asset Kredileri  
+
+- **Kod Lisansı**: MIT  
+- **Kullanılan Assetler**:  
+  - [16x16 Dungeon Tileset (itch.io)](https://0x72.itch.io/16x16-dungeon-tileset)  
+  - [Colonial City LittlePack (Unity Asset Store)](https://assetstore.unity.com/packages/3d/environments/urban/colonial-city-littlepack-163089)  
+  - [3D Square Tile Terrain Generator (Unity Asset Store)](https://assetstore.unity.com/packages/tools/terrain/3d-square-tile-terrain-generator-237277)  
