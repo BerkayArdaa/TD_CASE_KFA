@@ -141,9 +141,10 @@ Oyuncunun can barı, kullanabileceği yetenekler ve skor tablosu gösterilir.
 
 ## Ana Menü Ekranı  
 
-- Oyunu başlatabilir.  
-- Başlangıç dalgası seçilebilir.  
-- Oyundan çıkış yapılabilir.  
+- Oyunu başlatabilir (en üstteki tuş).  
+- Başlangıç dalgası seçilebilir ve ekran ortasında dalga gösterilir (sağdaki ve soldaki tuş).  
+- Oyundan çıkış yapılabilir (en alttaki tuş).
+  
 
 ![Ana Menü](Assets/ScreenShots_For_ReadMe/image_16.png)
 ## 🎨 Editor Tasarımı  
