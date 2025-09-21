@@ -360,6 +360,20 @@ Player’a bağlı scriptler ve inspector kullanımları:
 
 ---
 
+## 🎞️ Animasyonlar
+
+Bütün animasyonlar **2D sprite’lar** kullanılarak hazırlanmıştır.  
+- **Idle ve Movement Animasyonları**: Oyuncu ve düşman karakterleri için bekleme (idle) ve hareket (movement) animasyonları oluşturulmuştur.  
+- **Efekt Animasyonları**: Saldırı, vurulma, ok yağmuru ve boss ölümü gibi aksiyonlarda görsel efekt animasyonları eklenmiştir.  
+- **Animator Controller & Hareket Şemaları**: Unity Animator Controller ile state machine mantığında geçişler tanımlanmış, karakterlerin durumlarına göre akış şemaları oluşturulmuştur.  
+
+Bu sayede oyun içindeki görsellik hem akıcı hem de anlaşılır bir yapıda sağlanmıştır.
+
+
+---
+
+
+
 ## 🎮 Kontroller  
 
 | Aksiyon | Tuş |
