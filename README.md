@@ -379,7 +379,7 @@ Player’a bağlı scriptler ve inspector kullanımları:
 
 ## 📜 Lisans & Asset Kredileri  
 
-- **Kod Lisansı**: MIT  
+
 - **Kullanılan Assetler**:  
   - [16x16 Dungeon Tileset (itch.io)](https://0x72.itch.io/16x16-dungeon-tileset)  
   - [Colonial City LittlePack (Unity Asset Store)](https://assetstore.unity.com/packages/3d/environments/urban/colonial-city-littlepack-163089)  
