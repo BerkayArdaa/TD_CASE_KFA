@@ -14,9 +14,7 @@ Varsayımlar, Açıklamalar ve Notlar
   - Yolun başı spawn noktasıdır, sonu ise base objesidir.  
   - Base’in HP’si 0’a düştüğünde oyun biter ve ana menüye dönülür.  
 
-- **Platform**:  
-  - Testler **Windows 64-bit, Unity 2022.3.49f1 (LTS), Built-in RP** üzerinde yapılmıştır.  
-  - Diğer platformlarda test edilmemiştir.  
+
 
 
 ---
