@@ -202,7 +202,13 @@ Oyuncunun can barı, kullanabileceği yetenekler ve skor tablosu gösterilir.
 ![Player Genel](Assets/ScreenShots_For_ReadMe/image_25.png)
 
 #### Player Scriptleri  
-Player’a bağlı scriptler ve inspector kullanımları:  
+Player’a bağlı scriptler ve inspector kullanımları:
+- PlayerHealth
+- PlayerCombatAuto
+- PlayerMovement
+- Bite Effect
+- PlayerSlow
+
 
 ![Player Scriptleri 1](Assets/ScreenShots_For_ReadMe/image_26.png)  
 ![Player Scriptleri 2](Assets/ScreenShots_For_ReadMe/image_27.png)  
