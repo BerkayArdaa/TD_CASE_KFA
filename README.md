@@ -24,6 +24,15 @@ Varsayımlar, Açıklamalar ve Notlar
 - Prizde, performans modunda: **300–500 FPS**
 
 
+- ### Performance Stress Test
+- 200 enemies (animated): ~350 FPS
+- 1500 enemies (animated): ~150 FPS
+- 2000 enemies (animated): ~100 FPS
+> Testlerde oyun yüksek düşman sayısı ve animasyon yüküne rağmen akıcı çalışmıştır. 
+
+
+
+
 
 ---
 
