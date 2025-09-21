@@ -15,7 +15,7 @@ Bu proje, **Unity** kullanılarak 3D ortamda **2D sprite (billboard tekniği)** 
 ## 📖 Senaryo  
 - Tower Defence türünde bir oyun.  
 - Düşmanlar dalga dalga gelir ve belirlenmiş yolu takip eder.  
-- Oyuncu WASD ile hareket eder, en yakındaki düşmana otomatik saldırır (yakın veya menzilli).  
+- Oyuncu WASD ile hareket eder, en yakındaki düşmana otomatik saldırır (yakın veya menzilli olucak şekilde ayarlanmış bir script mevcuttur).  
 
 ---
 ## Player  
