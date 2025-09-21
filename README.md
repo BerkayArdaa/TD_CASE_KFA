@@ -185,7 +185,7 @@ Oyuncunun can barı, kullanabileceği yetenekler ve skor tablosu gösterilir.
 ![Heal](Assets/ScreenShots_For_ReadMe/image_23.png)
 
 - **Oyuncu Paneli Objesi:**  
-  - Anlatılan butonları içerir.  
+  - Panel için anlatılan butonları içerir.  
   - Başlangıçta **deaktif**, mekanik script ile aktifleşir.  
 ![Oyuncu Paneli](Assets/ScreenShots_For_ReadMe/image_24.png)
 ## 👾 Karakterler  
