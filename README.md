@@ -1,3 +1,26 @@
+## 📌 Özet 
+Varsayımlar, Açıklamalar ve Notlar
+
+- **Skor Sistemi**:  
+  - Her öldürülen düşmandan **10 skor** kazanılır.  
+  - **200 skor** karşılığında özel yetenekler (Can Doldurma, Ok Yağdırma) kullanılabilir.  
+  - Yetenek kullanıldığında skor otomatik düşer.  
+
+- **Boss Dalgaları**:  
+  - **5., 10. ve 15. dalgalarda** boss spawn olur.  
+  - Boss öldükten sonra dalgalar normal akışına devam eder.  
+
+- **Harita / Base**:  
+  - Yolun başı spawn noktasıdır, sonu ise base objesidir.  
+  - Base’in HP’si 0’a düştüğünde oyun biter ve ana menüye dönülür.  
+
+- **Platform**:  
+  - Testler **Windows 64-bit, Unity 2022.3.49f1 (LTS), Built-in RP** üzerinde yapılmıştır.  
+  - Diğer platformlarda test edilmemiştir.  
+
+
+---
+
 # TD_CASE_KFA  
 
 KFA Entertainment için hazırlanmış **Tower Defence prototip projesi**.  
