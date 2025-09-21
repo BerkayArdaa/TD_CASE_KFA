@@ -14,6 +14,14 @@ Varsayımlar, Açıklamalar ve Notlar
   - Yolun başı spawn noktasıdır, sonu ise base objesidir.  
   - Base’in HP’si 0’a düştüğünde oyun biter ve ana menüye dönülür.  
 
+### 💻 Donanım / Sistem Bilgisi 
+- İşlemci: Intel(R) Core(TM) i9-14900HX (2.20 GHz)  
+- RAM: 32 GB (31.6 GB kullanılabilir)  
+- Sistem Türü: 64-bit işletim sistemi, x64 tabanlı işlemci  
+
+### ⚡ FPS Test Sonuçları
+- Sessiz modda (pilde, priz takılı değilken): **30–40 FPS** 
+- Prizde, performans modunda: **300–500 FPS**
 
 
 
