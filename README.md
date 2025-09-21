@@ -304,15 +304,6 @@ Player’a bağlı scriptler ve inspector kullanımları:
 
 ---
 
-## 🚀 Kurulum  
-
-Projeyi klonlamak için:  
-
-```bash
-git lfs install
-git clone <repo_url>
-git lfs pull
-
 ## 🎮 Kontroller  
 
 | Aksiyon | Tuş |
@@ -365,3 +356,14 @@ git lfs pull
   - [16x16 Dungeon Tileset (itch.io)](https://0x72.itch.io/16x16-dungeon-tileset)  
   - [Colonial City LittlePack (Unity Asset Store)](https://assetstore.unity.com/packages/3d/environments/urban/colonial-city-littlepack-163089)  
   - [3D Square Tile Terrain Generator (Unity Asset Store)](https://assetstore.unity.com/packages/tools/terrain/3d-square-tile-terrain-generator-237277)  
+
+
+## 🚀 Kurulum  
+
+Projeyi klonlamak için:  
+
+```bash
+git lfs install
+git clone <repo_url>
+git lfs pull
+
