@@ -1,3 +1,23 @@
+# TD_CASE_KFA  
+
+KFA Entertainment için hazırlanmış **Tower Defence prototip projesi**.  
+Bu proje, **Unity** kullanılarak 3D ortamda **2D sprite (billboard tekniği)** ile temel oyun döngüsünün oynanabilir bir şekilde geliştirilmesini amaçlamaktadır.  
+
+---
+
+## 🎯 Amaç  
+- Unity oyun motoruna hâkimiyet göstermek.  
+- Temel oyun döngüsünü sağlıklı bir şekilde kurmak.  
+- Kod yapısını anlaşılır ve sürdürülebilir biçimde oluşturmak.  
+
+---
+
+## 📖 Senaryo  
+- Tower Defence türünde bir oyun.  
+- Düşmanlar dalga dalga gelir ve belirlenmiş yolu takip eder.  
+- Oyuncu WASD ile hareket eder, en yakındaki düşmana otomatik saldırır (yakın veya menzilli).  
+
+---
 ## Player  
 
 Karakterimiz WASD hareket edebiliyor, en yakın düşmana alev topu fırlatabiliyor ve bu alev topu 20 puan hasar veriyor.  
