@@ -432,10 +432,8 @@ Bu sayede oyun içindeki görsellik hem akıcı hem de anlaşılır bir yapıda 
 
 ## 🚀 Kurulum  
 
-Projeyi klonlamak için:  
+Projeyi klonlamak için belirlenmiş boş dosyada terminali açın. Sırasıyla aşağadaki kodları kullanın:  
 
 ```bash
 git lfs install
 git clone https://github.com/BerkayArdaa/TD_CASE_KFA.git
-git lfs pull
-
