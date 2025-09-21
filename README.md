@@ -20,7 +20,7 @@ Varsayımlar, Açıklamalar ve Notlar
 - Sistem Türü: 64-bit işletim sistemi, x64 tabanlı işlemci  
 
 ### ⚡ FPS Test Sonuçları
-- Sessiz modda (pilde, priz takılı değilken): **30–40 FPS** 
+- Sessiz modda (pilde, priz takılı değilken): **40-100 FPS** 
 - Prizde, performans modunda: **300–500 FPS**
 
 
