@@ -326,17 +326,26 @@ Player’a bağlı scriptler ve inspector kullanımları:
 
 ## 📊 Case Gereksinim Eşlemesi  
 
-| Case Maddesi | Bu Proje |
+## ✅ Case Uyum Tablosu
+
+| Case Maddesi                                           | Bu Proje |
 |---|---|
-| 3D dünyada 2D billboard | ✅ |
-| WASD hareket | ✅ |
-| Otomatik saldırı | ✅ |
-| Dalga tabanlı düşmanlar | ✅ |
-| NavMesh ile yol takibi | ✅ |
-| Renk/hız/can farklı düşman | ✅ |
-| Erken dalga çağırma (Extra) | ✅ |
-| Başlangıç menüsü (Extra) | ✅ |
-| Boss dalgaları (Extra) | ✅ |
+| 3D dünyada 2D billboard                                | ✅ |
+| WASD hareket                                           | ✅ |
+| Otomatik saldırı                                       | ✅ |
+| Dalga tabanlı düşmanlar                                | ✅ |
+| NavMesh ile yol takibi                                 | ✅ |
+| Renk/hız/can farklı düşman                             | ✅ |
+| **Erken dalga çağırma** (Extra)                        | ✅ |
+| **Başlangıç menüsü** (Extra)                           | ✅ |
+| **Boss dalgaları (5., 10., 15.)** (Extra)              | ✅ |
+| **Hasar alınca I-frame (geçici yenilmezlik)** (Extra)  | ✅ |
+| **Dirilince kısa süreli I-frame + görsel efekt** (Extra)| ✅ |
+| **200 skorla Ok Yağmuru + ilgili UI** (Extra)          | ✅ |
+| **200 skorla Can Doldurma + ilgili UI** (Extra)        | ✅ |
+| **Can gösteren UI (Hearts/Health bar)** (Extra)        | ✅ |
+
+
 
 ---
 
