@@ -274,9 +274,7 @@ Player’a bağlı scriptler ve inspector kullanımları:
 - Player’a menzilli saldırı yapar.  
 
 ![Ranged Enemy Inspector 1](Assets/ScreenShots_For_ReadMe/image_31.png)  
-![Ranged Enemy Inspector 2](Assets/ScreenShots_For_ReadMe/image_32.png)  
-![Ranged Enemy Inspector 3](Assets/ScreenShots_For_ReadMe/image_33.png)  
-![Ranged Enemy Inspector 4](Assets/ScreenShots_For_ReadMe/image_34.png)
+
 ## 🏞️ PlayGround  
 
 - 3D prefablar, 2D prefablar ve zemin için Terrain içerir.  
@@ -284,7 +282,9 @@ Player’a bağlı scriptler ve inspector kullanımları:
 - Oyuncu 2D ve 3D hareketsiz objelere çarpar, içinden geçemez.  
 - Alan dışına çıkmaması için görünmez bloklar vardır.  
 - Düşmanlar için **WayPoint** sistemi bulunur.  
-
+![PlayGround](Assets/ScreenShots_For_ReadMe/image_32.png)  
+![PlayGround](Assets/ScreenShots_For_ReadMe/image_33.png)  
+![PlayGround](Assets/ScreenShots_For_ReadMe/image_34.png)
 ![PlayGround 1](Assets/ScreenShots_For_ReadMe/image_35.png)  
 ![PlayGround 2](Assets/ScreenShots_For_ReadMe/image_36.png)  
 ![PlayGround 3](Assets/ScreenShots_For_ReadMe/image_37.png)  
